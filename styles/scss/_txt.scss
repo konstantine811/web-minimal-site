@@ -1,0 +1,28 @@
+.logo-txt {
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 15px;
+  color: $main-white;
+  text-decoration: none;
+}
+
+.h1 {
+  font-weight: 400;
+  font-size: 55px;
+}
+
+.txt {
+  &-sm {
+    font-size: 12px;
+  }
+  &-grey {
+    color: $grey;
+  }
+  &-bold {
+    font-weight: 700;
+  }
+}
