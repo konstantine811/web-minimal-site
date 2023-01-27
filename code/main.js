@@ -1,33 +1,59 @@
+const classNameBallLg = "cursor-ball--large";
+const classNameBallSm = "cursor-ball--small";
+const tlBallLg = gsap.timeline();
+
 document.addEventListener("DOMContentLoaded", () => {
   createCursor();
 });
 
 function createCursor() {
+  const hoverable = document.querySelectorAll(".hoverable");
   const ballLargeWidth = document
-    .getElementsByClassName("cursor-ball--large")[0]
+    .getElementsByClassName(classNameBallLg)[0]
     .getBoundingClientRect().width;
 
   const ballSmallWidth = document
-    .getElementsByClassName("cursor-ball--small")[0]
+    .getElementsByClassName(classNameBallSm)[0]
     .getBoundingClientRect().width;
 
   document.body.addEventListener("mousemove", (e) =>
     onMouseMove(e, ballLargeWidth, ballSmallWidth)
   );
+  for (let hoverEl of hoverable) {
+    hoverEl.addEventListener("mouseenter", onMouseEnter);
+    hoverEl.addEventListener("mouseleave", onMouseLeave);
+  }
+
+  document.addEventListener("touchstart", onMouseEnter, false);
 }
 
 function onMouseMove(e, wL, wS) {
-  console.log(wL, wS);
-  gsap.to(".cursor-ball--large", {
+  gsap.to(`.${classNameBallLg}`, {
     x: e.pageX - wL / 2,
     y: e.pageY - wL / 2,
     ease: "expo.out",
     duration: 1.5,
   });
 
-  gsap.to(".cursor-ball--small", {
+  gsap.to(`.${classNameBallSm}`, {
     x: e.pageX - wS / 2,
     y: e.pageY - wS / 2,
     ease: "expo.out",
+  });
+}
+
+function onMouseEnter() {
+  tlBallLg.to(`.${classNameBallLg}`, {
+    scale: 2,
+    ease: "back.out(1.7)",
+    duration: 0.3,
+  });
+}
+
+function onMouseLeave() {
+  tlBallLg.to(`.${classNameBallLg}`, {
+    scale: 1,
+    ease: "expo.out",
+    duration: 0.2,
   });
 }
