@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minimal Web Site</title>
     <link rel="stylesheet" href="./styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="./code/main.js"></script>
   </head>
   <body>
+    <div class="cursor">
+      <div class="cursor-ball cursor-ball--large"></div>
+      <div class="cursor-ball cursor-ball--small"></div>
+    </div>
     <div class="main-section-wrap flex justify-between flex-column">
       <header class="header">
         <div
           class="container flex flex-wrap justify-between items-center gap-15"
         >
-          <h3 class="logo-txt">C.A.</h3>
+          <h3 class="logo-txt hoverable">C.A.</h3>
           <nav class="header-nav flex gap-50">
-            <a href="" class="link">Home</a>
-            <a href="" class="link">About</a>
+            <a href="" class="link hoverable">Home</a>
+            <a href="" class="link hoverable">About</a>
           </nav>
         </div>
       </header>
@@ -34,7 +40,7 @@
         >
           <ul class="flex gap-19">
             <li>
-              <a href="">
+              <a class="hoverable" href="">
                 <img
                   src="./assets/svg-icons/linkedin.svg"
                   alt="LinkedIn icon link"
@@ -42,7 +48,7 @@
               </a>
             </li>
             <li>
-              <a href="">
+              <a class="hoverable" href="">
                 <img
                   src="./assets/svg-icons/facebook.svg"
                   alt="Facebook icon link"
@@ -50,7 +56,7 @@
               </a>
             </li>
             <li>
-              <a href="">
+              <a class="hoverable" href="">
                 <img
                   src="./assets/svg-icons/instagram.svg"
                   alt="Instagram icon link"

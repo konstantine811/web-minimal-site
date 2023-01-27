@@ -8,6 +8,25 @@
   font-size: 15px;
   color: $main-white;
   text-decoration: none;
+  position: relative;
+  &:before {
+    $width: 20px;
+    content: "";
+    position: absolute;
+    width: calc(100% + $width);
+    left: -$width / 2;
+    height: 1px;
+    background-color: $main-white;
+    bottom: -5px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  &:hover {
+    &:before {
+      transform: scaleX(1);
+    }
+  }
 }
 
 .h1 {
