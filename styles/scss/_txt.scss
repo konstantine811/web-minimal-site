@@ -22,7 +22,8 @@
     transform-origin: left;
     transition: transform 0.3s ease;
   }
-  &:hover {
+  &:hover,
+  &-active {
     &:before {
       transform: scaleX(1);
     }
@@ -35,15 +36,28 @@
 }
 
 .txt {
+  // sizes
   &-sm {
     font-size: 12px;
   }
+  &-md {
+    font-size: 20px;
+  }
+  // colors
   &-grey {
     color: $grey;
   }
+  // weight
   &-bold {
     font-weight: 700;
   }
+  // align
+  &-align {
+    &-right {
+      text-align: right;
+    }
+  }
+  // animations
   &-anim-letter {
     position: relative;
     display: inline-block;

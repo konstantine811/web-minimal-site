@@ -1,14 +1,31 @@
+// class names
 const classNameBallLg = "cursor-ball--large";
 const classNameBallSm = "cursor-ball--small";
 const linkNavigate = "link-navigate";
 const textAnim = "txt-anim";
 const textAnimLetter = `${textAnim}-letter`;
 const iconAnim = "icon-anim";
+// audio
+const audioUiHover = new Audio("../assets/sound/ui-hover.wav");
+const audioUiClick = new Audio("../assets/sound/ui-click.wav");
+const audioWhoosh = new Audio("../assets/sound/whoosh.wav");
+const audioSuround = new Audio("../assets/sound/Calm_Documentary_Piano.mp3");
+audioSuround.loop = true;
+audioUiClick.currentTime = 0.06;
 
 document.addEventListener("DOMContentLoaded", () => {
   createCursor();
   animText();
   customNavigate();
+  audioSuround.play();
+});
+
+window.addEventListener("blur", () => {
+  audioSuround.pause();
+});
+
+window.addEventListener("focus", () => {
+  audioSuround.play();
 });
 
 function createCursor() {
@@ -33,6 +50,8 @@ function createCursor() {
 }
 
 function onMouseMove(e, wL, wS) {
+  audioWhoosh.currentTime = 0.6;
+  audioWhoosh.play();
   gsap.to(`.${classNameBallLg}`, {
     x: e.pageX - wL / 2,
     y: e.pageY - wL / 2,
@@ -48,6 +67,7 @@ function onMouseMove(e, wL, wS) {
 }
 
 function onMouseEnter() {
+  audioUiHover.play();
   gsap.to(`.${classNameBallLg}`, {
     scale: 2,
     ease: "back.out(1.7)",
@@ -57,6 +77,8 @@ function onMouseEnter() {
 }
 
 function onMouseLeave() {
+  audioUiHover.pause();
+  audioUiHover.currentTime = 0;
   gsap.to(`.${classNameBallLg}`, {
     scale: 1,
     ease: "expo.out",
@@ -73,15 +95,16 @@ function splitElToLetter(el, className) {
 }
 
 function animText() {
+  audioWhoosh.play();
   const txtEl = document.querySelectorAll(`.${textAnim}`);
   for (let el of txtEl) {
     splitElToLetter(el, `${textAnimLetter}`);
   }
-
   gsap.from(`.${textAnimLetter}`, {
     y: 100,
     opacity: 0,
     filter: "blur(5px)",
+
     duration: 2,
     ease: "circ.out",
     stagger: 0.05,
@@ -101,30 +124,34 @@ function animText() {
 function customNavigate() {
   const linkEl = document.querySelectorAll(`.${linkNavigate}`);
   for (let el of linkEl) {
+    const hrefValue = el.getAttribute("href");
     el.addEventListener("click", (event) => {
       event.preventDefault();
-      gsap.to(`.${textAnimLetter}`, {
-        y: -10,
-        opacity: 0,
-        filter: "blur(5px)",
-        duration: 1,
-        ease: "circ.out",
-        stagger: 0.01,
-        overwrite: true,
-      });
+      if (hrefValue !== "") {
+        audioUiClick.play();
+        gsap.to(`.${textAnimLetter}`, {
+          y: -10,
+          opacity: 0,
+          filter: "blur(5px)",
+          duration: 1,
+          ease: "circ.out",
+          stagger: 0.01,
+          overwrite: true,
+        });
 
-      gsap.to(`.${iconAnim}`, {
-        y: -10,
-        scale: 0,
-        filter: "blur(5px)",
-        duration: 2,
-        ease: "circ.out",
-        stagger: 0.3,
-        overwrite: true,
-      });
-      setTimeout(() => {
-        window.location.href = el.getAttribute("href");
-      }, 1500);
+        gsap.to(`.${iconAnim}`, {
+          y: -10,
+          scale: 0,
+          filter: "blur(5px)",
+          duration: 2,
+          ease: "circ.out",
+          stagger: 0.3,
+          overwrite: true,
+        });
+        setTimeout(() => {
+          window.location.href = hrefValue;
+        }, 1500);
+      }
     });
   }
 }

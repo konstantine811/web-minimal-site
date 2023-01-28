@@ -60,6 +60,16 @@ body {
   padding-top: 35px;
 }
 
+// main
+.main {
+  &-about {
+    &-text {
+      max-width: 442px;
+      line-height: 135%;
+    }
+  }
+}
+
 // footer
 .footer {
   padding-bottom: 38px;
