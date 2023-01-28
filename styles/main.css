@@ -187,6 +187,11 @@ body {
   padding-top: 35px;
 }
 
+.main-about-text {
+  max-width: 442px;
+  line-height: 135%;
+}
+
 .footer {
   padding-bottom: 38px;
 }
@@ -215,7 +220,7 @@ body {
   transform-origin: left;
   transition: transform 0.3s ease;
 }
-.link:hover:before {
+.link:hover:before, .link-active:before {
   transform: scaleX(1);
 }
 
@@ -227,11 +232,17 @@ body {
 .txt-sm {
   font-size: 12px;
 }
+.txt-md {
+  font-size: 20px;
+}
 .txt-grey {
   color: #b0b8d6;
 }
 .txt-bold {
   font-weight: 700;
+}
+.txt-align-right {
+  text-align: right;
 }
 .txt-anim-letter {
   position: relative;

@@ -101,30 +101,33 @@ function animText() {
 function customNavigate() {
   const linkEl = document.querySelectorAll(`.${linkNavigate}`);
   for (let el of linkEl) {
+    const hrefValue = el.getAttribute("href");
     el.addEventListener("click", (event) => {
       event.preventDefault();
-      gsap.to(`.${textAnimLetter}`, {
-        y: -10,
-        opacity: 0,
-        filter: "blur(5px)",
-        duration: 1,
-        ease: "circ.out",
-        stagger: 0.01,
-        overwrite: true,
-      });
+      if (hrefValue !== "") {
+        gsap.to(`.${textAnimLetter}`, {
+          y: -10,
+          opacity: 0,
+          filter: "blur(5px)",
+          duration: 1,
+          ease: "circ.out",
+          stagger: 0.01,
+          overwrite: true,
+        });
 
-      gsap.to(`.${iconAnim}`, {
-        y: -10,
-        scale: 0,
-        filter: "blur(5px)",
-        duration: 2,
-        ease: "circ.out",
-        stagger: 0.3,
-        overwrite: true,
-      });
-      setTimeout(() => {
-        window.location.href = el.getAttribute("href");
-      }, 1500);
+        gsap.to(`.${iconAnim}`, {
+          y: -10,
+          scale: 0,
+          filter: "blur(5px)",
+          duration: 2,
+          ease: "circ.out",
+          stagger: 0.3,
+          overwrite: true,
+        });
+        setTimeout(() => {
+          window.location.href = hrefValue;
+        }, 1500);
+      }
     });
   }
 }
