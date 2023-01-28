@@ -233,6 +233,10 @@ body {
 .txt-bold {
   font-weight: 700;
 }
+.txt-anim-letter {
+  position: relative;
+  display: inline-block;
+}
 
 .cursor {
   pointer-events: none;
