@@ -6,14 +6,18 @@ const textAnim = "txt-anim";
 const textAnimLetter = `${textAnim}-letter`;
 const iconAnim = "icon-anim";
 // audio
-const audioUiHover = new Audio("../assets/sound/ui-hover.wav");
-const audioUiClick = new Audio("../assets/sound/ui-click.wav");
-const audioWhoosh = new Audio("../assets/sound/whoosh.wav");
-const audioSuround = new Audio("../assets/sound/Calm_Documentary_Piano.mp3");
-audioSuround.loop = true;
-audioUiClick.currentTime = 0.06;
+let audioUiHover;
+let audioUiClick;
+let audioWhoosh;
+let audioSuround;
 
 document.addEventListener("DOMContentLoaded", () => {
+  audioUiHover = document.getElementById("sound-hover");
+  audioUiClick = document.getElementById("sound-click");
+  audioWhoosh = document.getElementById("sound-whoosh");
+  audioSuround = document.getElementById("sound-suround");
+  audioSuround.loop = true;
+  audioUiClick.currentTime = 0.06;
   createCursor();
   animText();
   customNavigate();
