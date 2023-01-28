@@ -1,6 +1,5 @@
 const classNameBallLg = "cursor-ball--large";
 const classNameBallSm = "cursor-ball--small";
-const tlBallLg = gsap.timeline();
 
 document.addEventListener("DOMContentLoaded", () => {
   createCursor();
@@ -42,18 +41,12 @@ function onMouseMove(e, wL, wS) {
   });
 }
 
-const IsEnterHover = false;
 function onMouseEnter() {
   gsap.to(`.${classNameBallLg}`, {
     scale: 2,
-    onStart: () => {
-      IsEnterHover = true;
-    },
-    onComplete: () => {
-      IsEnterHover = false;
-    },
     ease: "back.out(1.7)",
-    duration: 0.3,
+    duration: 0.6,
+    overwrite: true,
   });
 }
 
@@ -61,6 +54,7 @@ function onMouseLeave() {
   gsap.to(`.${classNameBallLg}`, {
     scale: 1,
     ease: "expo.out",
-    duration: 0.2,
+    duration: 0.4,
+    overwrite: true,
   });
 }
