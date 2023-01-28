@@ -10,6 +10,7 @@ const audioUiHover = new Audio("../assets/sound/ui-hover.wav");
 const audioUiClick = new Audio("../assets/sound/ui-click.wav");
 const audioWhoosh = new Audio("../assets/sound/whoosh.wav");
 const audioSuround = new Audio("../assets/sound/Calm_Documentary_Piano.mp3");
+audioSuround.loop = true;
 audioUiClick.currentTime = 0.06;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -94,11 +95,11 @@ function splitElToLetter(el, className) {
 }
 
 function animText() {
+  audioWhoosh.play();
   const txtEl = document.querySelectorAll(`.${textAnim}`);
   for (let el of txtEl) {
     splitElToLetter(el, `${textAnimLetter}`);
   }
-  audioWhoosh.play();
   gsap.from(`.${textAnimLetter}`, {
     y: 100,
     opacity: 0,
