@@ -1,0 +1,24 @@
+.cursor {
+  pointer-events: none;
+  &-ball {
+    position: fixed;
+    top: 0;
+    left: 0;
+    mix-blend-mode: difference;
+    z-index: 10000;
+    &--large,
+    &--small {
+      position: absolute;
+      background-color: $main-white;
+      border-radius: 50%;
+    }
+    &--large {
+      width: 30px;
+      height: 30px;
+    }
+    &--small {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
