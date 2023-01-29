@@ -79,9 +79,9 @@ body {
   &-lg {
     width: 100%;
     display: block;
-    background-color: rgba($main-white, 0.3);
+    background-color: rgba($main-black, 0.7);
     border: 1px solid $main-black;
-    padding: 17px;
+    padding: 30px;
     transition: box-shadow, transform 0.3s ease;
     color: $main-white;
     font-size: 29px;
