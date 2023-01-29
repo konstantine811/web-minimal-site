@@ -9,9 +9,23 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.main-section-wrap {
-  min-height: 100vh;
-  background-color: $main-black;
+.main-section {
+  &-wrap {
+    background-color: $main-black;
+    position: relative;
+    min-height: 100vh;
+  }
+  &-inner {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+  }
+}
+
+.pointer {
+  &-none {
+    pointer-events: none;
+  }
 }
 
 .container {
@@ -78,15 +92,14 @@ body {
   }
 }
 
-/* .icon {
-  &-anim {
-    opacity: 0;
-    filter: blur(5px);
-    transform: scale(0.5) translateY(10px);
-  }
-} */
-
 // header
+.frame-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 .header {
   padding-top: 35px;
 }
