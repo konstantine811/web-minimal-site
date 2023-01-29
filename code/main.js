@@ -10,6 +10,7 @@ let audioUiHover;
 let audioUiClick;
 let audioWhoosh;
 let audioSuround;
+let isEnableSound = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   audioUiHover = document.getElementById("sound-hover");
@@ -17,20 +18,37 @@ document.addEventListener("DOMContentLoaded", () => {
   audioWhoosh = document.getElementById("sound-whoosh");
   audioSuround = document.getElementById("sound-suround");
   audioSuround.loop = true;
-  audioUiClick.currentTime = 0.06;
+  audioUiClick.currentTime = 0.6;
   createCursor();
-  animText();
   customNavigate();
-  audioSuround.play();
 });
 
 window.addEventListener("blur", () => {
-  audioSuround.pause();
+  if (isEnableSound) {
+    audioSuround.pause();
+  }
 });
 
 window.addEventListener("focus", () => {
-  audioSuround.play();
+  if (isEnableSound) {
+    audioSuround.play();
+  }
 });
+
+function onEnableSound(status) {
+  audioUiClick.play();
+  isEnableSound = status;
+  if (isEnableSound) {
+    audioSuround.play();
+  }
+  gsap.to(".popup", {
+    visibility: "hidden",
+    opacity: 0,
+    ease: "expo.out",
+    duration: 1.5,
+  });
+  animText();
+}
 
 function createCursor() {
   const hoverable = document.querySelectorAll(".hoverable");
@@ -54,8 +72,6 @@ function createCursor() {
 }
 
 function onMouseMove(e, wL, wS) {
-  audioWhoosh.currentTime = 0.6;
-  audioWhoosh.play();
   gsap.to(`.${classNameBallLg}`, {
     x: e.pageX - wL / 2,
     y: e.pageY - wL / 2,
@@ -99,7 +115,9 @@ function splitElToLetter(el, className) {
 }
 
 function animText() {
-  audioWhoosh.play();
+  if (isEnableSound) {
+    audioWhoosh.play();
+  }
   const txtEl = document.querySelectorAll(`.${textAnim}`);
   for (let el of txtEl) {
     splitElToLetter(el, `${textAnimLetter}`);
@@ -133,6 +151,7 @@ function customNavigate() {
       event.preventDefault();
       if (hrefValue !== "") {
         audioUiClick.play();
+
         gsap.to(`.${textAnimLetter}`, {
           y: -10,
           opacity: 0,

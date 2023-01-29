@@ -21,6 +21,17 @@
       <div class="cursor-ball cursor-ball--large"></div>
       <div class="cursor-ball cursor-ball--small"></div>
     </div>
+    <div class="popup flex flex-column gap-10 items-center justify-center">
+      <h3 class="h3">Enable sound effects?</h3>
+      <div class="popup-buttons">
+        <button onclick="onEnableSound(true)" class="btn-lg hoverable">
+          Yes
+        </button>
+        <button onclick="onEnableSound(false)" class="btn-lg hoverable">
+          No
+        </button>
+      </div>
+    </div>
     <div class="main-section-wrap flex justify-between flex-column">
       <header class="header">
         <div
@@ -40,8 +51,8 @@
         </div>
       </header>
       <main class="main">
-        <div class="container flex justify-between">
-          <h1 class="h1">
+        <div class="container flex justify-between gap-15 flex-wrap">
+          <h1 class="h1 main-about-title">
             <span class="txt-anim">I’m</span> <br />
             <span class="txt-anim">your website.</span>
           </h1>
