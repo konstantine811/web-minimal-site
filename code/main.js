@@ -42,10 +42,16 @@ function onEnableSound(status) {
     audioSuround.play();
   }
   gsap.to(".popup", {
-    visibility: "hidden",
-    opacity: 0,
-    ease: "expo.out",
-    duration: 1.5,
+    keyframes: [
+      {
+        opacity: 0,
+        filter: "blur(0px)",
+        ease: "expo.out",
+        pointerEvents: "none",
+        duration: 2.5,
+      },
+      { display: "none" },
+    ],
   });
   animText();
 }
