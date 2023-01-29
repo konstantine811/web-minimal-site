@@ -32,6 +32,9 @@ body {
 }
 
 .gap {
+  &-10 {
+    gap: 10px;
+  }
   &-15 {
     gap: 15px;
   }
@@ -47,6 +50,9 @@ body {
   &-between {
     justify-content: space-between;
   }
+  &-center {
+    justify-content: center;
+  }
 }
 
 .items {
@@ -55,16 +61,58 @@ body {
   }
 }
 
+.btn {
+  &-lg {
+    width: 100%;
+    display: block;
+    background-color: rgba($main-white, 0.3);
+    border: 1px solid $main-black;
+    padding: 17px;
+    transition: box-shadow, transform 0.3s ease;
+    color: $main-white;
+    font-size: 29px;
+    &:hover {
+      box-shadow: 0px 6px 1px 1px black;
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/* .icon {
+  &-anim {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.5) translateY(10px);
+  }
+} */
+
 // header
 .header {
   padding-top: 35px;
 }
 
+// popup
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($main-black, 0.6);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+  &-buttons {
+    width: 100%;
+  }
+}
+
 // main
 .main {
   &-about {
+    &-title {
+      min-width: 200px;
+    }
     &-text {
       max-width: 442px;
+      min-width: 200px;
       line-height: 135%;
     }
   }
